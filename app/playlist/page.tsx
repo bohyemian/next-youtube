@@ -1,8 +1,14 @@
 import React from 'react'
 
-const page = () => {
+type PlaylistProps = {
+  searchParams: {
+    list: string
+  }
+}
+
+const page = (props: PlaylistProps) => {
   return (
-    <div>playlist</div>
+    <div>playlist {props.searchParams.list}</div>
   )
 }
 

@@ -1,6 +1,12 @@
 import React from 'react'
 
-const page = (props) => {
+type ChannenProps = {
+  params: {
+    id: string;
+  }
+}
+
+const page = (props: ChannenProps) => {
   return (
     <div>channel/[{props.params.id}]</div>
   )
