@@ -1,14 +1,13 @@
 import React from 'react'
 
-type PlaylistProps = {
-  searchParams: {
-    list: string
-  }
-}
+type searchParamsProps = Promise<{ [key: string]: string | [] | undefined }>
 
-const page = (props: PlaylistProps) => {
+const page = async (props: { searchParams: searchParamsProps }) => {
+  const searchParams = await props.searchParams;
+
+  console.log(searchParams)
   return (
-    <div>playlist {props.searchParams.list}</div>
+    <div>playlist </div>
   )
 }
 

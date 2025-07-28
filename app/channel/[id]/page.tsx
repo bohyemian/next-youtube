@@ -1,14 +1,13 @@
 import React from 'react'
 
-type ChannenProps = {
-  params: {
-    id: string;
-  }
-}
+type ParamsProps = Promise<{ id: string[] }>;
 
-const page = (props: ChannenProps) => {
+const page = async (props: { params: ParamsProps }) => {
+  const params = await props.params;
+
+  console.log(params)
   return (
-    <div>channel/[{props.params.id}]</div>
+    <div>channel/[{params.id}]</div>
   )
 }
 
