@@ -7,6 +7,8 @@ import { FaMusic, FaRegCompass } from 'react-icons/fa';
 import { IoHome } from 'react-icons/io5';
 import { cn } from '@/lib/utils';
 import { FiPlus } from 'react-icons/fi';
+import { dummyPlaylistArray } from './../../lib/dummyData';
+import PlayListNav from './PlayListNav';
 
 const Navigator = () => {
   const pathname = usePathname();
@@ -19,7 +21,7 @@ const Navigator = () => {
   }, [pathname]);
 
   return (
-    <div className="px-8">
+    <div className="px-7">
       <span className="flex flex-col gap-y-4">
         {routes.map(route => {
           return (
@@ -32,9 +34,14 @@ const Navigator = () => {
       </span>
       <hr className="my-6 border-t" />
       <button type="button" className="flex items-center justify-center gap-1 w-full px-2 py-1.5 bg-neutral-700 text-sm rounded-2xl">
-        <FiPlus size={20} />
-        새 재생목록
+        <FiPlus size={20} />새 재생목록
       </button>
+      <ul className="mt-6">
+        {dummyPlaylistArray.map(list => {
+          console.log(list)
+          return <PlayListNav playlist={list} />
+        })}
+      </ul>
     </div>
   )
 }

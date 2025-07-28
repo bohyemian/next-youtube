@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/providers/themeProviders";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import Sidebar from "@/components/Sidebar";
 import "./globals.css";
 
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko-KR">
-      <body className={twMerge(inter.className, "h-dvh")}>
+      <body className={cn(inter.className, "h-dvh")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
