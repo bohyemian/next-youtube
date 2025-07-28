@@ -7,7 +7,7 @@ type PlaylistProps = {
     id: number;
     owner: string;
     playlistName: string;
-    songList: string[];
+    songList: { name: string; channelId: number; channel: string; src: string; imageSrc: string; }[];
   }
 }
 
@@ -19,7 +19,7 @@ const PlayListNav = ({ playlist }: PlaylistProps) => {
   }
 
   return (
-    <li key={id} className="flex flex-row flex-nowrap justify-between items-center mt-3 first:mt-0 group">
+    <li className="flex flex-row flex-nowrap justify-between items-center mt-3 first:mt-0 group">
       <div className="flex flex-col overflow-hidden">
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-md text-neutral-300 group-hover:pr-2">{playlistName}</p>
         <span className="text-xs text-neutral-500">{owner}</span>

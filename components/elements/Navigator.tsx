@@ -39,7 +39,7 @@ const Navigator = () => {
       <ul className="mt-6">
         {dummyPlaylistArray.map(list => {
           console.log(list)
-          return <PlayListNav playlist={list} />
+          return <PlayListNav key={list.id} playlist={list} />
         })}
       </ul>
     </div>
