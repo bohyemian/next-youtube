@@ -1,6 +1,3 @@
-import { sleep } from "@/lib/utils";
-import React from "react";
-
-const page = () => <div>HomePage</div>
+const page = () => <div className="flex justify-center items-center h-full">HomePage</div>
 
 export default page;

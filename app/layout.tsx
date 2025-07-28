@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/providers/themeProviders";
+import { twMerge } from "tailwind-merge";
+import Sidebar from "@/components/Sidebar";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,14 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko-KR">
-      <body className={inter.className}>
+      <body className={twMerge(inter.className, "h-dvh")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Sidebar>
+            {children}
+          </Sidebar>
         </ThemeProvider>
       </body>
     </html>
