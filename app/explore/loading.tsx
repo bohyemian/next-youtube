@@ -1,6 +1,6 @@
 'use client'
 
-import LoadingBar from '@/components/LoadingBar'
+import LoadingBar from '@/components/ui/LoadingBar'
 
 const loading = () => <LoadingBar />
 
