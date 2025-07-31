@@ -1,16 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo } from 'react';
+import PlayListNav from './PlayListNav';
+import { ComponentProps, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { FaMusic, FaRegCompass } from 'react-icons/fa';
 import { IoHome } from 'react-icons/io5';
 import { cn } from '@/lib/utils';
 import { FiPlus } from 'react-icons/fi';
 import { dummyPlaylistArray } from './../../lib/dummyData';
-import PlayListNav from './PlayListNav';
 
-const Navigator = () => {
+const Navigator = (props: ComponentProps<"div">) => {
   const pathname = usePathname();
   const routes = useMemo(() => {
     return [
@@ -25,7 +25,7 @@ const Navigator = () => {
       <span className="flex flex-col gap-y-4">
         {routes.map(route => {
           return (
-            <Link href={route.href} key={route.label} className={cn("flex flex-row items-center gap-x-4 text-stone-500", route.isActive && "text-white")}>
+            <Link href={route.href} key={route.label} className={cn("flex flex-row items-center gap-x-4 text-neutral-500", route.isActive && "text-white")}>
               {route.icon}
               <span className="text-md">{route.label}</span>
             </Link>
@@ -38,7 +38,6 @@ const Navigator = () => {
       </button>
       <ul className="mt-6">
         {dummyPlaylistArray.map(list => {
-          console.log(list)
           return <PlayListNav key={list.id} playlist={list} />
         })}
       </ul>
