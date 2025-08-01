@@ -1,33 +1,57 @@
+'use client'
+
 import Image from "next/image"
-import UserIcon from "./UserIcon"
-import Logo from "../elements/Logo"
-import Navigator from "../elements/Navigator"
-import { cn } from './../../lib/utils';
+import Logo from "@/components/elements/Logo"
+import Navigator from "@/components/elements/Navigator"
+import UserIcon from "@/components/ui/UserIcon"
+import { ReactNode, useEffect, useRef, useState } from "react";
+import { cn } from '@/lib/utils';
 import { FiSearch } from "react-icons/fi"
 import { FaChromecast } from "react-icons/fa"
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
+import { Drawer, DrawerTitle, DrawerDescription, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
 
 const HeaderDrawer = ({ children, triggerClass }: { children: React.ReactNode; triggerClass?: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Drawer direction="left">
+    <Drawer direction="left" open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger className={cn("flex gap-3", triggerClass)}>{children}</DrawerTrigger>
       <DrawerContent className="w-60 h-full">
-        <Logo className="p-6" />
+        <DrawerTitle className="sr-only">Side Menu</DrawerTitle>
+        <DrawerDescription className="sr-only">menu, playlist</DrawerDescription>
+        <Logo className="p-6" isInDrawer handleIconClick={() => setIsOpen(false)} />
         <Navigator className="px-7" />
       </DrawerContent>
     </Drawer>
   )
 }
 
-const Header = ({ children }: { children: React.ReactNode }) => {
+const Header = ({ children }: { children: ReactNode }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef<HTMLHRElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollValue = headerRef?.current?.scrollTop;
+
+      setIsScrolled(scrollValue !== 0);
+    }
+
+    headerRef?.current?.addEventListener('scroll', handleScroll);
+
+    return () => {
+      headerRef?.current?.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
   return (
-    <header className="relative">
+    <header ref={headerRef} className="relative overflow-y-auto h-full">
       <div className="absolute w-full h-[400px] before:absolute before:inset-0 before:bg-gradient-to-t before:from-[#0c0a09] before:z-10">
         <Image src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b" className="absolute opacity-30" aria-hidden="true" style={{ objectFit: "cover" }} fill alt="" />
       </div>
-      <div className="flex flex-row items-center gap-4 sticky z-10 contents-padding">
-        <span className="hidden lg:flex flex-row-reverse items-center gap-2 flex-1 px-4 py-2 bg-white/10 rounded-lg">
-          <input type="text" className="flex-1 bg-transparent" />
+      <div className={cn("flex flex-row items-center gap-4 sticky top-0 z-10 contents-padding", isScrolled && "bg-[rgba(12,10,9,0.7)] transition-[background]")}>
+        <span className="hidden lg:flex flex-row-reverse items-center gap-2 flex-1 max-w-[480px] px-4 py-2 bg-white/10 rounded-lg">
+          <input type="text" className="flex-1 bg-transparent placeholder:text-sm" placeholder="노래, 앨범, 아티스트, 팟캐스트 검색" />
           <FiSearch size={24} />
         </span>
         <HeaderDrawer triggerClass="mr-auto">

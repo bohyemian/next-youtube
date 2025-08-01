@@ -1,7 +1,7 @@
-import { ReactElement } from 'react'
+import { ReactNode } from 'react';
 
-const IconButton = ({ icon }: { icon: ReactElement }) => {
-  return <span>{icon}</span>;
-}
+const IconButton = ({ icon, onIconClick }: { icon: ReactNode; onIconClick?: () => void }) => {
+  return <div onClick={onIconClick}>{icon}</div>
+};
 
 export default IconButton

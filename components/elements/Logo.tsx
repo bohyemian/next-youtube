@@ -1,25 +1,33 @@
 'use client';
 
 import Image from 'next/image';
-import IconButton from './IconButton';
+import IconButton from '@/components/elements/IconButton';
+import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { FiMenu } from 'react-icons/fi';
-import { cn } from '@/lib/utils';
+import { IoIosClose } from 'react-icons/io';
 
-const Logo = ({ className }: { className?: string }) => {
+type LogoProps = {
+  isInDrawer?: boolean;
+  className?: string;
+  handleIconClick?: () => void;
+}
+
+const Logo = ({ isInDrawer = false, className, handleIconClick }: LogoProps) => {
   const { push } = useRouter();
 
   const handleLogoClick = () => {
     push("/");
   }
 
-  const handleMenuClick = () => {
-  }
-
   return (
-    <div className={cn("flex flex-row gap-3", className)}>
-      <IconButton icon={<FiMenu size={36} className="p-1 rounded-full transition-[background] hover:bg-slate-500/40 hover:cursor-pointer" onClick={handleMenuClick} />} />
-      <Image src="/main-logo.svg" width={100} height={10} alt="logo" className="cursor-pointer" onClick={handleLogoClick} />
+    <div className={cn("flex flex-row items-center gap-3", className)}>
+      <IconButton onIconClick={handleIconClick} icon={
+        isInDrawer ?
+          <IoIosClose size={36} className="p-1 rounded-full transition-[background] hover:bg-slate-500/40 hover:cursor-pointer" /> :
+          <FiMenu size={36} className="lg:hidden p-2 rounded-full transition-[background] hover:bg-slate-500/40 hover:cursor-pointer" />
+      } />
+      <Image src="/main-logo.svg" width={100} height={30} alt="logo" className="cursor-pointer" onClick={handleLogoClick} />
     </div>
   )
 };

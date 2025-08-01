@@ -1,3 +1,3 @@
-const page = () => <div className="flex justify-center items-center h-full">HomePage</div>
+const page = () => <div className="contents-padding pt-0">HomePage</div>
 
 export default page;
