@@ -2,8 +2,9 @@
 
 import Image from "next/image"
 import Logo from "@/components/elements/Logo"
-import Navigator from "@/components/elements/Navigator"
 import UserIcon from "@/components/ui/UserIcon"
+import Navigator from "@/components/elements/Navigator"
+import useUIStateStore, { defaultHeaderImage } from "@/app/hooks/useUIState"
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { cn } from '@/lib/utils';
 import { FiSearch } from "react-icons/fi"
@@ -29,6 +30,7 @@ const HeaderDrawer = ({ children, triggerClass }: { children: React.ReactNode; t
 const Header = ({ children }: { children: ReactNode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLHRElement | null>(null);
+  const headerImagesrc = useUIStateStore(s => s.headerImagesrc);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,11 +49,11 @@ const Header = ({ children }: { children: ReactNode }) => {
   return (
     <header ref={headerRef} className="relative overflow-y-auto h-full">
       <div className="absolute w-full h-[400px] before:absolute before:inset-0 before:bg-gradient-to-t before:from-[#0c0a09] before:z-10">
-        <Image src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b" className="absolute opacity-30" aria-hidden="true" style={{ objectFit: "cover" }} fill alt="" />
+        <Image src={headerImagesrc || defaultHeaderImage} className="absolute opacity-30" aria-hidden="true" style={{ objectFit: "cover" }} fill alt="" />
       </div>
       <div className={cn("flex flex-row items-center gap-4 sticky top-0 z-10 contents-padding", isScrolled && "bg-[rgba(12,10,9,0.7)] transition-[background]")}>
         <span className="hidden lg:flex flex-row-reverse items-center gap-2 flex-1 max-w-[480px] px-4 py-2 bg-white/10 rounded-lg">
-          <input type="text" className="flex-1 bg-transparent placeholder:text-sm" placeholder="노래, 앨범, 아티스트, 팟캐스트 검색" />
+          <input type="text" className="flex-1 bg-transparent placeholder:text-sm placeholder:text-neutral-300" placeholder="노래, 앨범, 아티스트, 팟캐스트 검색" />
           <FiSearch size={24} />
         </span>
         <HeaderDrawer triggerClass="mr-auto">
