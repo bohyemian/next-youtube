@@ -15,28 +15,31 @@ type PlayListCarouselProps = {
   playlistArray: Playlist[];
 }
 
-
-const PlayListCarousel: React.FC<PlayListCarouselProps> = ({
+const PlayListCarousel = ({
   title,
   subTitle,
   thumbname,
   playlistArray
-}) => {
+}: PlayListCarouselProps) => {
   return (
     <Carousel className="w-full">
       <div className="flex items-center gap-4 mt-8">
         {thumbname}
         <div className="flex flex-col">
-          {subTitle && <span className="text-neutral-500 leading-none">{subTitle}</span>}
-          <span className="text-2xl font-bold">{title}</span>
+          {subTitle && <span className="text-xs text-neutral-500 leading-none">{subTitle}</span>}
+          {title && <span className="text-2xl font-bold">{title}</span>}
         </div>
-        <CarouselPrevious className="static translate-y-0 ml-auto" />
-        <CarouselNext className="static translate-y-0" />
+        {playlistArray.length > 1 &&
+          <>
+            <CarouselPrevious className="static translate-y-0 ml-auto" />
+            <CarouselNext className="static translate-y-0" />
+          </>
+        }
       </div>
       <CarouselContent className="mt-4">
         {playlistArray.map(item => {
           return (
-            <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={item.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
               <PlayListCard playlist={item} />
             </CarouselItem>
           )
