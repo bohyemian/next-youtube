@@ -18,3 +18,14 @@ export const getRandomInt = (min: number, max: number) => {
 export function getRandomElementFromArray(arr: any[]) {
   return arr[getRandomInt(0, arr.length - 1)];
 }
+
+// export function chunkArray<T>(arr: T[], chunkSize: number) {
+export const chunkArray = <T>(arr: T[], chunkSize: number) => {
+  const resultArray = [];
+
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    resultArray.push(arr.slice(i, i + chunkSize));
+  }
+
+  return resultArray;
+};
