@@ -6,28 +6,29 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { chunkArray } from "@/lib/utils";
-import { type TopSong } from "@/types";
-import SongCard from "./SongCard";
+import GenreCard from "./GenreCard";
 
-type SongListCarouselProps = {
+type GenreListCarouselProps = {
   title: string;
   subTitle?: string;
   thumbname?: React.ReactNode;
-  songListTop10: TopSong[];
+  genreList: string[];
 }
 
-const SongColumn = ({ songList }: { songList: TopSong[] }) => <>{songList.map(song => <SongCard key={song.rank} song={song} />)}</>
+const GenreColumn = ({ genreList }: Pick<GenreListCarouselProps, 'genreList'>) => {
+  return <>{genreList.map(genre => <GenreCard genre={genre} />)}</>
+}
 
-const SongListCarousel = ({
+const GenreListCarousel = ({
   title,
   subTitle,
   thumbname,
-  songListTop10
-}: SongListCarouselProps) => {
-  const chunkedTop10List = chunkArray(songListTop10, 4);
+  genreList
+}: GenreListCarouselProps) => {
+  const chunkedGenreList = chunkArray(genreList, 4);
 
   return (
-    <Carousel className="w-full">
+    <Carousel>
       <div className="flex items-center gap-4 mt-8">
         {thumbname}
         <div className="flex flex-col">
@@ -40,10 +41,10 @@ const SongListCarousel = ({
         </>
       </div>
       <CarouselContent className="mt-4">
-        {chunkedTop10List.map((songList, i) => {
+        {chunkedGenreList.map((genre, i) => {
           return (
-            <CarouselItem key={i} className="lg:basis-1/2">
-              <SongColumn songList={songList} />
+            <CarouselItem key={i} className="basis-1/3 lg:basis-1/4">
+              <GenreColumn genreList={genre} />
             </CarouselItem>
           )
         })}
@@ -52,4 +53,4 @@ const SongListCarousel = ({
   )
 }
 
-export default SongListCarousel
+export default GenreListCarousel
