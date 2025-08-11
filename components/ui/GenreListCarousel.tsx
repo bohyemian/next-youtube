@@ -16,7 +16,7 @@ type GenreListCarouselProps = {
 }
 
 const GenreColumn = ({ genreList }: Pick<GenreListCarouselProps, 'genreList'>) => {
-  return <>{genreList.map(genre => <GenreCard genre={genre} />)}</>
+  return <>{genreList.map(genre => <GenreCard key={genre} genre={genre} />)}</>
 }
 
 const GenreListCarousel = ({
