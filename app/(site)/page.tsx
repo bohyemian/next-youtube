@@ -9,8 +9,6 @@ const page = async () => {
   const dummyPlaylistArr3 = [await getPlaylistById(2)];
   const dummyPlaylistArr4 = [await getPlaylistById(3)];
 
-  console.log(dummyPlaylistArr2)
-
   return (
     <div className="contents-padding pt-0">
       <Category />

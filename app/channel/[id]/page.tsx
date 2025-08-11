@@ -5,7 +5,6 @@ type ParamsProps = Promise<{ id: string[] }>;
 const page = async (props: { params: ParamsProps }) => {
   const params = await props.params;
 
-  console.log(params)
   return (
     <div>channel/[{params.id}]</div>
   )
