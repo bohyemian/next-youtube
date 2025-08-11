@@ -20,7 +20,7 @@ export function getRandomElementFromArray(arr: any[]) {
 }
 
 // export function chunkArray<T>(arr: T[], chunkSize: number) {
-export const chunkArray = <T>(arr: T[], chunkSize: number) => {
+export const chunkArray = <T>(arr: T[], chunkSize: number = 1) => {
   const resultArray = [];
 
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -28,4 +28,8 @@ export const chunkArray = <T>(arr: T[], chunkSize: number) => {
   }
 
   return resultArray;
+};
+
+export const generateRandomHex = () => {
+  return '#' + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0');
 };
