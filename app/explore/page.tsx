@@ -8,7 +8,7 @@ const page = async () => {
   const [playlistrArray, songListTop10] = await Promise.all([getAllPlaylist(), getSongListTop10()]);
 
   return (
-    <div className="contents-padding pb-40">
+    <div className="contents-padding pt-0 pb-40">
       <Category />
       <PlayListCarousel playlistArray={playlistrArray} title="Goodbye, My Summer" />
       <SongListCarousel songListTop10={songListTop10} title="인기곡" />

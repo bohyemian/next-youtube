@@ -15,7 +15,7 @@ const PlayListCard = ({ playlist }: { playlist: Playlist }) => {
   return (
     <dl className="flex flex-col relative cursor-pointer group" onClick={() => push(`/playlist?${id}`)}>
       <dt className="mt-2">{playlistName}</dt>
-      <dd className="relative h-[136px] -order-last"><Image src={getRandomElementFromArray(songList).imageSrc} fill={true} alt="thumbnail" className="object-cover" /></dd>
+      <dd className="relative h-[136px] -order-last"><Image src={getRandomElementFromArray(songList).imageSrc} fill={true} alt="thumbnail" className="object-cover rounded-sm" /></dd>
       <dd className="text-sm text-neutral-500">{owner} {songList?.length && `- 트랙 ${songList?.length}개`}</dd>
       <dd className="hidden absolute top-0 w-full bg-gradient-to-b from-gray-950/70 group-hover:block">
         <IconButton icon={<IoMdMore size={28} className="p-1 hover:bg-gray-600/40 rounded-full" />} className="absolute top-2 right-2" />
