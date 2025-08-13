@@ -54,7 +54,9 @@ const Header = ({ children }: { children: ReactNode }) => {
       <div className={cn("flex flex-row items-center gap-4 sticky top-0 z-50 contents-padding", isScrolled && "bg-[rgba(12,10,9,0.9)] transition-[background]")}>
         <span className="hidden lg:flex flex-row-reverse items-center gap-2 flex-1 max-w-[480px] px-4 py-2 bg-white/10 rounded-lg">
           <input type="text" className="flex-1 bg-transparent placeholder:text-sm placeholder:text-neutral-300" placeholder="노래, 앨범, 아티스트, 팟캐스트 검색" />
-          <FiSearch size={24} />
+          <button type="button">
+            <FiSearch size={24} />
+          </button>
         </span>
         <HeaderDrawer triggerClass="mr-auto">
           <Logo className="lg:hidden" />
