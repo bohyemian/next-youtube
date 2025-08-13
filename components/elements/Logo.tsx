@@ -22,7 +22,7 @@ const Logo = ({ isInDrawer = false, className, handleIconClick }: LogoProps) => 
 
   return (
     <div className={cn("flex flex-row items-center gap-3", className)}>
-      <IconButton onIconClick={handleIconClick} icon={
+      <IconButton className="lg:hidden" onIconClick={handleIconClick} icon={
         isInDrawer ?
           <IoIosClose size={36} className="p-1 rounded-full transition-[background] hover:bg-slate-500/40 hover:cursor-pointer" /> :
           <FiMenu size={36} className="lg:hidden p-2 rounded-full transition-[background] hover:bg-slate-500/40 hover:cursor-pointer" />

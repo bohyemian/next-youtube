@@ -8,15 +8,15 @@ import { FaMusic, FaRegCompass } from 'react-icons/fa';
 import { IoHome } from 'react-icons/io5';
 import { cn } from '@/lib/utils';
 import { FiPlus } from 'react-icons/fi';
-import { dummyPlaylistArray } from './../../lib/dummyData';
+import { dummyPlaylistArray } from '@/lib/dummyData';
 
 const Navigator = (props: ComponentProps<"div">) => {
   const pathname = usePathname();
   const routes = useMemo(() => {
     return [
-      { icon: <IoHome size={24} />, label: "HOME", isActive: pathname === "/", href: "/" },
-      { icon: <FaRegCompass size={24} />, label: "둘러보기", isActive: pathname === "/explore", href: "/explore" },
-      { icon: <FaMusic size={20} />, label: "보관함", isActive: pathname === "/library", href: "/library" },
+      { icon: <IoHome size={22} />, label: "HOME", isActive: pathname === "/", href: "/" },
+      { icon: <FaRegCompass size={22} />, label: "둘러보기", isActive: pathname === "/explore", href: "/explore" },
+      { icon: <FaMusic size={22} />, label: "보관함", isActive: pathname === "/library", href: "/library" },
     ]
   }, [pathname]);
 

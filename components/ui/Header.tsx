@@ -11,12 +11,15 @@ import { FiSearch } from "react-icons/fi"
 import { FaChromecast } from "react-icons/fa"
 import { Drawer, DrawerTitle, DrawerDescription, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
 
-const HeaderDrawer = ({ children, triggerClass }: { children: React.ReactNode; triggerClass?: string }) => {
+const HeaderDrawer = ({ children, triggerClass }: { children: ReactNode; triggerClass?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Drawer direction="left" open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger className={cn("flex gap-3", triggerClass)}>{children}</DrawerTrigger>
+      <div className="relative mr-auto">
+        <DrawerTrigger className={triggerClass}></DrawerTrigger>
+        {children}
+      </div>
       <DrawerContent className="w-60 h-full">
         <DrawerTitle className="sr-only">Side Menu</DrawerTitle>
         <DrawerDescription className="sr-only">menu, playlist</DrawerDescription>
@@ -58,8 +61,8 @@ const Header = ({ children }: { children: ReactNode }) => {
             <FiSearch size={24} />
           </button>
         </span>
-        <HeaderDrawer triggerClass="mr-auto">
-          <Logo className="lg:hidden" />
+        <HeaderDrawer triggerClass="absolute inset-0">
+          <Logo className="mr-auto lg:hidden" />
         </HeaderDrawer>
         <FaChromecast size={24} />
         <UserIcon />

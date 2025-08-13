@@ -13,10 +13,10 @@ const PlayListCard = ({ playlist }: { playlist: Playlist }) => {
   const { id, owner, playlistName, songList } = playlist;
 
   return (
-    <dl className="flex flex-col relative cursor-pointer group" onClick={() => push(`/playlist?${id}`)}>
-      <dt className="mt-2">{playlistName}</dt>
+    <dl className="flex flex-col relative cursor-pointer group h-full" onClick={() => push(`/playlist?list=${id}`)}>
+      <dt className="mt-2 leading-tight">{playlistName}</dt>
       <dd className="relative h-[136px] -order-last"><Image src={getRandomElementFromArray(songList).imageSrc} fill={true} alt="thumbnail" className="object-cover rounded-sm" /></dd>
-      <dd className="text-sm text-neutral-500">{owner} {songList?.length && `- 트랙 ${songList?.length}개`}</dd>
+      <dd className="mt-auto pt-1 text-xs text-neutral-500">{owner} {songList?.length && `- 트랙 ${songList?.length}개`}</dd>
       <dd className="hidden absolute top-0 w-full bg-gradient-to-b from-gray-950/70 group-hover:block">
         <IconButton icon={<IoMdMore size={28} className="p-1 hover:bg-gray-600/40 rounded-full" />} className="absolute top-2 right-2" />
         <FaRegCirclePlay className="absolute top-[128px] right-2 p-1.5 bg-black/50 -translate-y-full rounded-full hover:scale-110 transform-gpu transition-transform" size={36} color="red" />
