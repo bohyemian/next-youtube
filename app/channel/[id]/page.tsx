@@ -29,7 +29,7 @@ const page = async (props: { params: ParamsProps }) => {
         <Button className="rounded-full flex-grow-0 px-5 text-sm lg:flex-grow" size="sm"><FiRadio size={12} />뮤직 스테이션</Button>
       </div>
       <h3 className="mt-12 text-xl font-bold">노래</h3>
-      {channel.songList.map(song => <SongCard song={song} />)}
+      {channel.songList.map(song => <SongCard key={song.name} song={song} />)}
       <h3 className="mt-12 text-xl font-bold">앨범</h3>
       {<PlayListCarousel playlistArray={channel.playlistArray} />}
     </section>
