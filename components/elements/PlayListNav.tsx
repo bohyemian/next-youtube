@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { FaRegCirclePlay } from "react-icons/fa6";
 
 type PlaylistProps = {
@@ -12,7 +13,7 @@ type PlaylistProps = {
 }
 
 const PlayListNav = ({ playlist }: PlaylistProps) => {
-  const { id, owner, playlistName, songList } = playlist;
+  const { id, owner, playlistName } = playlist;
 
   const onClickPlay = () => {
     // [TODO] play music
@@ -22,7 +23,7 @@ const PlayListNav = ({ playlist }: PlaylistProps) => {
     <li className="flex flex-row flex-nowrap justify-between items-center mt-3 first:mt-0 group">
       <div className="flex flex-col overflow-hidden">
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-md text-neutral-300 group-hover:pr-2">{playlistName}</p>
-        <span className="text-xs text-neutral-500">{owner}</span>
+        <Link href={`/channel/${id}`} className="text-xs text-neutral-500">{owner}</Link>
       </div>
       <FaRegCirclePlay size={24} color="#aaa" onClick={onClickPlay} className="hidden shrink-0 group-hover:block group-hover:cursor-pointer" />
     </li>

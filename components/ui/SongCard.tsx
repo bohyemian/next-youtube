@@ -1,10 +1,10 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import { type Song, TopSong } from '@/types'
 import { GoDash } from 'react-icons/go'
 import { FaRegCirclePlay, FaRegThumbsDown, FaRegThumbsUp } from 'react-icons/fa6'
 import { TbTriangleFilled, TbTriangleInvertedFilled } from 'react-icons/tb'
 import { BsThreeDotsVertical } from 'react-icons/bs'
-import { cn } from '@/lib/utils'
 
 const Rank = ({ rank, prevRank }: Pick<TopSong, 'rank' | 'prevRank'>) => {
   return (
@@ -25,7 +25,7 @@ const SongCard = ({ song }: { song: Song & Partial<Pick<TopSong, 'prevRank' | 'r
     <dl className="flex flex-row items-center gap-4 mt-4 relative w-full first:mt-0 group" >
       <dt className="flex flex-col">
         {song?.name}
-        <span className="text-xs text-neutral-500">{song?.channel}</span>
+        <Link href={`/channel/${song.channelId}`} className="text-xs text-neutral-500 hover:underline">{song?.channel}</Link>
       </dt>
       <dd className="relative order-first">
         {<Image src={song.imageSrc} width={48} height={48} alt="thumbnail" />}

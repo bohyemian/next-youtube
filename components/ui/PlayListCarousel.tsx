@@ -7,9 +7,10 @@ import {
 } from "@/components/ui/carousel"
 import PlayListCard from "./PlayListCard";
 import { type Playlist } from "@/types";
+import { cn } from "@/lib/utils";
 
 type PlayListCarouselProps = {
-  title: string;
+  title?: string;
   subTitle?: string;
   thumbname?: React.ReactNode;
   playlistArray: Playlist[];
@@ -23,7 +24,7 @@ const PlayListCarousel = ({
 }: PlayListCarouselProps) => {
   return (
     <Carousel className="w-full">
-      <div className="flex items-center gap-4 mt-8">
+      <div className={cn("flex items-center gap-4 mt-8", (title && subTitle && playlistArray.length === 1) ?? "mt-0")}>
         {thumbname}
         <div className="flex flex-col">
           {subTitle && <span className="text-xs text-neutral-500 leading-none">{subTitle}</span>}

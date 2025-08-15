@@ -1,5 +1,9 @@
+import Header from "@/components/ui/Header";
+
 const layout = ({ children }: { children: React.ReactNode }) => {
-  return <div className="relative w-full">{children}</div>
+  return <div className="flex-1">
+    <Header>{children}</Header>
+  </div>
 };
 
 export default layout;
