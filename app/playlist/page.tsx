@@ -1,8 +1,8 @@
 import { permanentRedirect } from "next/navigation";
 import { getRandomElementFromArray } from "@/lib/utils";
 import { getPlaylistById } from "@/lib/dummyData";
-import { HeaderBgChanger } from "@/components/ui/HeaderBgChanger";
-import PlayListHead from "@/components/ui/PlayListHead";
+import { HeaderBgChanger } from "@/components/HeaderBgChanger";
+import PlayListHead from "@/components/PlayListHead";
 
 type searchParamsProps = Promise<{ [key: string]: string | string[] | undefined }>
 

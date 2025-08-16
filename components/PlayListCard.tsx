@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import IconButton from '../elements/IconButton';
+import IconButton from './elements/IconButton';
 import { IoMdMore } from 'react-icons/io';
 import { FaRegCirclePlay } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';

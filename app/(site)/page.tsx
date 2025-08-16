@@ -1,6 +1,6 @@
 import Category from './components/Category';
-import PlayListCarousel from '@/components/ui/PlayListCarousel';
-import UserIcon from '@/components/ui/UserIcon';
+import PlayListCarousel from '@/components/PlayListCarousel';
+import UserIcon from '@/components/UserIcon';
 import { dummyPlaylistArray, getPlaylistById } from '@/lib/dummyData';
 
 const page = async () => {

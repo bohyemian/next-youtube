@@ -1,5 +1,5 @@
 import Category from "./components/Category"
-import PlayListCard from '@/components/ui/PlayListCard';
+import PlayListCard from '@/components/PlayListCard';
 import { dummyPlaylistArray } from '@/lib/dummyData';
 import { getRandomElementFromArray } from "@/lib/utils";
 

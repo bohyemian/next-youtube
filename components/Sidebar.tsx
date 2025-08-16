@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import Logo from '../elements/Logo'
-import Navigator from '../elements/Navigator'
+import Logo from './elements/Logo'
+import Navigator from './elements/Navigator'
 
 const Sidebar = ({ children }: { children: ReactNode }) => {
   return (

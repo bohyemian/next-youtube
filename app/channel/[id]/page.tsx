@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { HeaderBgChanger } from "@/components/ui/HeaderBgChanger";
+import { HeaderBgChanger } from "@/components/HeaderBgChanger";
 import { getChannelById } from "@/lib/dummyData";
 import { getRandomElementFromArray } from "@/lib/utils";
 import { FiRadio } from "react-icons/fi";
 import { TiArrowShuffle } from "react-icons/ti";
 import { permanentRedirect } from "next/navigation";
-import SongCard from "@/components/ui/SongCard";
-import PlayListCarousel from "@/components/ui/PlayListCarousel";
+import SongCard from "@/components/SongCard";
+import PlayListCarousel from "@/components/PlayListCarousel";
 
 type ParamsProps = Promise<{ id: string[] }>;
 

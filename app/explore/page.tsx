@@ -1,7 +1,7 @@
-import GenreListCarousel from '@/components/ui/GenreListCarousel';
+import GenreListCarousel from '@/components/GenreListCarousel';
 import Category from './components/Category'
-import PlayListCarousel from '@/components/ui/PlayListCarousel';
-import SongListCarousel from '@/components/ui/SongListCarousel';
+import PlayListCarousel from '@/components/PlayListCarousel';
+import SongListCarousel from '@/components/SongListCarousel';
 import { dymmyGenreList, getAllPlaylist, getSongListTop10 } from '@/lib/dummyData'
 
 const page = async () => {
