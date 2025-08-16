@@ -4,7 +4,7 @@ import Image from "next/image"
 import Logo from "@/components/elements/Logo"
 import UserIcon from "@/components/UserIcon"
 import Navigator from "@/components/elements/Navigator"
-import useUIStateStore, { defaultHeaderImage } from "@/app/store/useUIStore"
+import useUIStateStore, { defaultHeaderImage } from "@/store/useUIStore"
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { cn } from '@/lib/utils';
 import { FiSearch } from "react-icons/fi"

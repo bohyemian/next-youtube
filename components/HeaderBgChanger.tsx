@@ -1,6 +1,6 @@
 'use client';
 
-import useUIStateStore from '@/app/store/useUIStore';
+import useUIStateStore from '@/store/useUIStore';
 import { useEffect } from 'react';
 
 export const HeaderBgChanger = ({ imgSrc }: { imgSrc: string }) => {
