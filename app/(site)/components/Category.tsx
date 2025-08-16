@@ -1,6 +1,6 @@
 "use client"
 
-import useUIStateStore from "@/app/hooks/useUIState"
+import useUIStateStore from "@/app/store/useUIStore"
 import { homeCategoryList } from "@/lib/dummyData";
 import { cn } from "@/lib/utils";
 
