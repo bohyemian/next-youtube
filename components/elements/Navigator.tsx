@@ -27,7 +27,7 @@ const Navigator = (props: ComponentProps<"div">) => {
           return (
             <Link href={route.href} key={route.label} className={cn("flex flex-row items-center gap-x-4 text-neutral-500", route.isActive && "text-white")}>
               {route.icon}
-              <span className="text-md">{route.label}</span>
+              <span className="text-md hover:underline">{route.label}</span>
             </Link>
           )
         })}
