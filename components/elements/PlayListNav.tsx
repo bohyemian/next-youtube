@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import usePlayerStore from "@/store/usePlayerStore";
 import { FaRegCirclePlay } from "react-icons/fa6";
 
 type PlaylistProps = {
@@ -13,11 +14,9 @@ type PlaylistProps = {
 }
 
 const PlayListNav = ({ playlist }: PlaylistProps) => {
-  const { id, owner, playlistName } = playlist;
-
-  const onClickPlay = () => {
-    // [TODO] play music
-  }
+  const { id, owner, playlistName, songList } = playlist;
+  const addSongList = usePlayerStore(s => s.addSongList);
+  const onClickPlay = () => addSongList(songList);
 
   return (
     <li className="flex flex-row flex-nowrap justify-between items-center mt-3 first:mt-0 group">
