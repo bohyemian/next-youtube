@@ -20,10 +20,12 @@ const usePlayerStore = create<PlayerType>((set) => ({
   prevPlayerQueue: [],
   nextPlayerQueue: [],
   addSong: (song) =>
-    set(() => {
+    set((prev) => {
       return {
         isVisiblePlayer: !!song,
         activeSong: song,
+        prevPlayerQueue: [],
+        nextPlayerQueue: [],
       };
     }),
   addSongList: (songList) =>
