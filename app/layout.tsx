@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko-KR">
+    <html lang="ko-KR" suppressHydrationWarning>
       <body className={cn(inter.className, "h-dvh")}>
         <ThemeProvider
           attribute="class"
