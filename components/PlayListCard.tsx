@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import IconButton from './elements/IconButton';
+import { MouseEvent } from 'react';
 import { IoMdMore } from 'react-icons/io';
 import { FaRegCirclePlay } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
@@ -13,7 +14,11 @@ const PlayListCard = ({ playlist }: { playlist: Playlist }) => {
   const { push } = useRouter();
   const { id, owner, playlistName, songList } = playlist;
   const addSongList = usePlayerStore(s => s.addSongList);
-  const handleClickPlay = () => addSongList(songList);
+  const handleClickPlay = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    addSongList(songList);
+  };
 
   return (
     <dl className="flex flex-col relative cursor-pointer group h-full" onClick={() => push(`/playlist?list=${id}`)}>
