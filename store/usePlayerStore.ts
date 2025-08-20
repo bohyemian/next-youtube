@@ -6,6 +6,7 @@ interface PlayerType {
   activeSong?: Song | null;
   prevPlayerQueue: Song[];
   nextPlayerQueue: Song[];
+  addSong: (song: Song) => void;
   addSongList: (songList: Song[]) => void;
   playPrev: () => void;
   playNext: () => void;
@@ -18,6 +19,13 @@ const usePlayerStore = create<PlayerType>((set) => ({
   activeSong: null,
   prevPlayerQueue: [],
   nextPlayerQueue: [],
+  addSong: (song) =>
+    set(() => {
+      return {
+        isVisiblePlayer: !!song,
+        activeSong: song,
+      };
+    }),
   addSongList: (songList) =>
     set((prev) => {
       const prevSong = prev.activeSong;
