@@ -36,16 +36,18 @@ const Header = ({ children }: { children: ReactNode }) => {
   const headerImagesrc = useUIStateStore(s => s.headerImagesrc);
 
   useEffect(() => {
+    const headerEl = headerRef?.current;
+
     const handleScroll = () => {
-      const scrollValue = headerRef?.current?.scrollTop;
+      const scrollValue = headerEl?.scrollTop;
 
       setIsScrolled(scrollValue !== 0);
     }
 
-    headerRef?.current?.addEventListener('scroll', handleScroll);
+    headerEl?.addEventListener('scroll', handleScroll);
 
     return () => {
-      headerRef?.current?.removeEventListener('scroll', handleScroll);
+      headerEl?.removeEventListener('scroll', handleScroll);
     }
   }, []);
 

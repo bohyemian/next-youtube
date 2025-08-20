@@ -44,10 +44,12 @@ const PlayerContent = () => {
   }, [nextPlayerQueue, playNext]);
 
   useEffect(() => {
-    ref.current?.addEventListener('ended', handleNext);
+    const audioEl = ref.current;
+
+    audioEl?.addEventListener('ended', handleNext);
 
     return () => {
-      ref.current?.removeEventListener('ended', handleNext);
+      audioEl?.removeEventListener('ended', handleNext);
     }
   }, [ref, handleNext]);
 
