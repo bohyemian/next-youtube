@@ -8,7 +8,7 @@ export const HeaderBgChanger = ({ imgSrc }: { imgSrc: string }) => {
 
   useEffect(() => {
     imgSrc && setHeaderImageSrc(imgSrc);
-  }, []);
+  }, [imgSrc, setHeaderImageSrc]);
 
   return <></>;
 }
