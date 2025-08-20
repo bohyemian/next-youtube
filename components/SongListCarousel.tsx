@@ -5,11 +5,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { chunkArray } from "@/lib/utils";
+import { ComponentProps } from "react";
+import { chunkArray, cn } from "@/lib/utils";
 import { type TopSong } from "@/types";
 import SongCard from "./SongCard";
 
-type SongListCarouselProps = {
+type SongListCarouselProps = ComponentProps<"div"> & {
   title: string;
   subTitle?: string;
   thumbname?: React.ReactNode;
@@ -22,12 +23,13 @@ const SongListCarousel = ({
   title,
   subTitle,
   thumbname,
-  songListTop10
+  songListTop10,
+  className
 }: SongListCarouselProps) => {
   const chunkedTop10List = chunkArray(songListTop10, 4);
 
   return (
-    <Carousel className="w-full">
+    <Carousel className={cn("w-full", className)}>
       <div className="flex items-center gap-4 mt-8">
         {thumbname}
         <div className="flex flex-col">

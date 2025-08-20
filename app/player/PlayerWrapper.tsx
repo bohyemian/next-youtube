@@ -11,7 +11,7 @@ const PlayerWrapper = () => {
   };
 
   return (
-    <div className="fixed bottom-0 w-full h-16 z-50">
+    <div className="fixed bottom-0 w-full pb-3 z-50">
       <PlayerContent />
     </div>
   )

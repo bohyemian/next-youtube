@@ -10,7 +10,7 @@ const page = async () => {
   return (
     <div className="contents-padding pt-0 pb-40">
       <Category />
-      <PlayListCarousel playlistArray={playlistrArray} title="Goodbye, My Summer" />
+      <PlayListCarousel playlistArray={playlistrArray} title="Goodbye, My Summer" className="mt-8" />
       <SongListCarousel songListTop10={songListTop10} title="인기곡" />
       <GenreListCarousel genreList={dymmyGenreList} title="분위기 및 장르" />
     </div>
