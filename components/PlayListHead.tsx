@@ -22,7 +22,7 @@ const PlayListHead = ({ playlist }: { playlist: Playlist }) => {
       <dl className="inline-flex flex-col gap-2 relative min-h-40 text-left lg:pl-44">
         <dt className="pb-2 text-2xl font-extrabold">{playlistName}</dt>
         <dd className="relative -order-last w-40 h-40 m-auto mb-4 lg:absolute lg:left-0">
-          <Image src={randomSong?.imageSrc} fill alt="album thumbnail" />
+          <Image src={randomSong?.imageSrc} fill sizes="100%" alt="album thumbnail" />
         </dd>
         <dd className="text-sm text-neutral-400">앨범 &middot; {owner} &middot; 2025</dd>
         <dd className="text-sm text-neutral-400">{songList.length}곡 &middot; {songList.length * 4}분</dd>
