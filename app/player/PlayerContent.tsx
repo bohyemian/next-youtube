@@ -8,6 +8,7 @@ import { ClockLoader } from "react-spinners"
 import { FaPause, FaPlay } from "react-icons/fa"
 import { MdOutlineSkipNext, MdOutlineSkipPrevious } from "react-icons/md"
 import { useCallback, useEffect } from "react"
+import { cn } from "@/lib/utils"
 
 const PlayerContent = () => {
   const activeSong = usePlayerStore(s => s.activeSong);
@@ -59,14 +60,20 @@ const PlayerContent = () => {
       {audio}
       <div className="flex items-center justify-center mt-6">
         <div className="inline-flex items-center gap-2 px-7">
-          <button type="button" className="p-1 disabled:opacity-40" disabled={!prevPlayerQueue.length} onClick={handlePrev}><MdOutlineSkipPrevious aria-label="이전 곡" size={24} /></button>
+          <button type="button" className="relative p-1 disabled:opacity-40 group" disabled={!prevPlayerQueue.length} onClick={handlePrev}>
+            <MdOutlineSkipPrevious aria-label="이전 곡" size={24} />
+            <span className={cn("hidden absolute bottom-full p-2 bg-neutral-300/30 text-xs whitespace-nowrap -translate-x-1/4 rounded-lg", prevPlayerQueue.length > 0 && "group-hover:block")}>{prevPlayerQueue[0]?.name}</span>
+          </button>
           {
             isLoading ? <ClockLoader aria-label="로딩중" size={18} color="#acacac" /> :
               playing ?
                 <button type="button" className="p-2" onClick={controls.pause}><FaPause size={12} /></button> :
                 <button type="button" className="p-2" onClick={handlePlay}><FaPlay size={12} /></button>
           }
-          <button type="button" className="p-1 disabled:opacity-60" disabled={!nextPlayerQueue.length} onClick={handleNext}><MdOutlineSkipNext size={24} aria-label="다음 곡" /></button>
+          <button type="button" className="relative p-1 disabled:opacity-60 group" disabled={!nextPlayerQueue.length} onClick={handleNext}>
+            <MdOutlineSkipNext size={24} aria-label="다음 곡" />
+            <span className={cn("hidden absolute bottom-full p-2 bg-neutral-300/30 text-xs whitespace-nowrap -translate-x-1/4 rounded-lg", nextPlayerQueue.length > 0 && "group-hover:block")}>{nextPlayerQueue[0]?.name}</span>
+          </button>
         </div>
         {activeSong?.imageSrc && <Image src={activeSong?.imageSrc} className={activeSong?.imageSrc && "mr-2"} width={24} height={24} alt="thumbnail" />}
         <strong className="text-sm text-neutral-300 font-normal">{activeSong?.name}</strong>
